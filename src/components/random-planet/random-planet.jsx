@@ -14,10 +14,15 @@ export default class RandomPlanet extends Component {
 		loading: true,
 	};
 
-	constructor() {
-		super();
+	componentDidMount() {
 		this.updatePlanet();
+		this.interval = setInterval(this.updatePlanet, 10000)
 	}
+
+	componentWillUnmount() {
+		clearInterval(this.interval);
+	}
+
 	 //событие в котором заменяем пустой объкт из стейта на полученный через swapi-service(id,name,population,diametr,rotation period) и отключается loader
 	onPlanetLoaded = planet => this.setState({
 		planet, 
@@ -33,8 +38,8 @@ export default class RandomPlanet extends Component {
     });
   };
 
-	updatePlanet() {
-		const id = Math.floor(Math.random()*25)+2; //случайным образом получаем id(от 2 до 27) планеты 
+	updatePlanet = () => {
+		const id = Math.floor(Math.random()*17)+2; //случайным образом получаем id(от 2 до 27) планеты 
 		this.swapiService.getPlanet(id)
 			.then(this.onPlanetLoaded)
 			.catch(this.onError);

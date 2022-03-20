@@ -25,7 +25,7 @@ export default class SwapiService {
 		return this._transformPerson(person); //возвращаем объект
 	}
 	// функция переобразующая данные по персонажам
-	_transformPerson(person) {
+	_transformPerson = (person) => {
 		return {
 			id: this._extractId(person),
 			name: person.name,
@@ -47,7 +47,7 @@ export default class SwapiService {
 		return this._transformPlanet(planet); //возвращаем объект
 	}
 	// функция переобразующая данные по планете
-	_transformPlanet(planet) {
+	_transformPlanet = (planet) => {
 		return {
 			id: this._extractId(planet),
 			name: planet.name,

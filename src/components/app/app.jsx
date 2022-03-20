@@ -1,24 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import Header from '../header';
-import ItemList from '../item-list';
 import RandomPlanet from '../random-planet';
-import PersonDetails from '../person-details';
+import PeoplePage from '../people-page';
 
-const App = () => {
-	return (
-		<div className='container'>
-			<Header />
-			<RandomPlanet />
-			<div className="row mb2">
-				<div className="col-md-6">
-					<ItemList />
-				</div>
-				<div className="col-md-6">
-					<PersonDetails />
-				</div>
+export default class App extends Component {
+	state = {
+		showRandomPlanet: true
+	}
+	
+	render() {
+		return (
+			<div className='container'>
+				<Header />
+				<RandomPlanet />
+				<PeoplePage />
 			</div>
-		</div>
-	)
+		)
+	}
 }
-export default App;
